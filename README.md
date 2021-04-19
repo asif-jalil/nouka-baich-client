@@ -26,4 +26,4 @@ npm install
 
 ## Visit Live Site
 
-If you wanna take a look of my website, [Go Here](https://kenakata.netlify.app/)
+If you wanna take a look of my website, [Go Here](https://noukabaich.netlify.app/)
