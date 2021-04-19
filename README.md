@@ -19,7 +19,7 @@ NOUKA BAICH is a **Online Boat Hiring** website. The main purpose of this websit
 If you want to add more feature, simply clone this repo
 
 ```
-git clone https://github.com/Porgramming-Hero-web-course/full-stack-client-asif-jalil.git
+git clone https://github.com/Porgramming-Hero-web-course/complete-website-client-asif-jalil.git
 cd full-stack-client-asif-jalil
 npm install
 ```
