@@ -19,7 +19,7 @@ const AddReview = () => {
   } = useForm();
 
   useEffect(() => {
-    fetch("http://localhost:5000/review-by-user", {
+    fetch("https://salty-journey-40699.herokuapp.com/review-by-user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const AddReview = () => {
     setDisabledBtn(true);
     setLoader(true);
     const reviewInfo = { ...data, email: currentUser.email };
-    fetch("http://localhost:5000/add-review", {
+    fetch("https://salty-journey-40699.herokuapp.com/add-review", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -8,7 +8,7 @@ const FooterLink = () => {
   const [boats, setBoats] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/boats")
+    fetch("https://salty-journey-40699.herokuapp.com/boats")
       .then((res) => res.json())
       .then((data) => {
         setBoats(data);

@@ -9,7 +9,7 @@ const Boat = () => {
 
   useEffect(() => {
     setLoader(true);
-    fetch("http://localhost:5000/boats")
+    fetch("https://salty-journey-40699.herokuapp.com/boats")
       .then((res) => res.json())
       .then((data) => {
         setBoats(data);

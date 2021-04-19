@@ -16,7 +16,7 @@ const AddAdmin = () => {
   const onSubmit = (data) => {
     console.log(data);
     setLoader(true);
-    fetch("http://localhost:5000/add-admin", {
+    fetch("https://salty-journey-40699.herokuapp.com/add-admin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

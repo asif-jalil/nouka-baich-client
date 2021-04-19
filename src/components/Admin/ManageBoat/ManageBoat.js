@@ -10,7 +10,7 @@ const ManageBoat = () => {
   const [deleteStatus, setDeleteStatus] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/boats")
+    fetch("https://salty-journey-40699.herokuapp.com/boats")
       .then((res) => res.json())
       .then((data) => {
         setBoats(data);
@@ -19,7 +19,7 @@ const ManageBoat = () => {
   }, [deleteStatus]);
 
   const handleDelete = (id, cb) => {
-    fetch(`http://localhost:5000/delete-boat?id=${id}`, {
+    fetch(`https://salty-journey-40699.herokuapp.com/delete-boat?id=${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

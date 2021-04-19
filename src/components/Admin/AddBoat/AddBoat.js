@@ -27,7 +27,7 @@ const AddBoat = () => {
     boatData.append("boatLocation", data.boatLocation);
     boatData.append("boatBarths", data.boatBarths);
 
-    fetch("http://localhost:5000/add-boat", {
+    fetch("https://salty-journey-40699.herokuapp.com/add-boat", {
       method: "POST",
       body: boatData,
     })

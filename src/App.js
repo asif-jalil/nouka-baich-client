@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/check-admin", {
+    fetch("https://salty-journey-40699.herokuapp.com/check-admin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
