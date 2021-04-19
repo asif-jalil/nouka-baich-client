@@ -1,0 +1,64 @@
+.c2a {
+  background: url(../../../images/c2a.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 170px 0;
+  text-align: center;
+  position: relative;
+  z-index: 0;
+}
+
+.c2a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+.c2a h2 {
+  color: #fff;
+  font-size: 65px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.c2a p {
+  font-size: 25px;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .c2a h2 {
+    font-size: 55px;
+  }
+
+  .c2a p {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 767px) {
+  .c2a {
+    padding: 90px 0;
+  }
+
+  .c2a h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .c2a p {
+    font-size: 16px;
+  }
+
+  .c2a-btn {
+    padding: 12px 20px;
+  }
+}

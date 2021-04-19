@@ -1,0 +1,30 @@
+.review {
+  padding: 80px 0;
+  position: relative;
+}
+
+.review .spinner-border {
+  position: absolute;
+  left: calc(50% - 10px);
+  top: 70%;
+}
+
+.single-review {
+  height: calc(100% - 30px);
+  margin-bottom: 30px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.single-review img {
+  width: 80px;
+}
+
+@media (max-width: 767px) {
+  .single-review {
+    text-align: center;
+  }
+}

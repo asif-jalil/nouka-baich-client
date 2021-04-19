@@ -1,0 +1,49 @@
+.feature-content .section-title {
+  text-align: left;
+}
+
+.feature-content .section-title::before,
+.feature-content .section-title::after {
+  left: 0;
+  transform: unset;
+  -webkit-transform: unset;
+  -moz-transform: unset;
+  -ms-transform: unset;
+  -o-transform: unset;
+}
+
+.feature-txt {
+  font-size: 14px;
+  color: #515c6d;
+  line-height: 2;
+  word-spacing: 5px;
+}
+
+.feature-icons {
+  text-align: center;
+  margin-top: 45px;
+}
+
+.feature-icons .icon {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.feature-icons .icon img {
+  width: 45px;
+  margin-bottom: 15px;
+}
+
+.feature-icons .icon p {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+@media(max-width: 480px) {
+  .feature-icons .icon {
+    width: 50%;
+  }
+
+}
