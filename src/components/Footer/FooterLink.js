@@ -20,7 +20,7 @@ const FooterLink = () => {
       <ul className="foot-menu">
         {boats.map((boat, idx) => (
           <li key={idx}>
-            <Link to="/">{boat.boatInfo.boatName}</Link>
+            <Link to="/">{boat.boatName}</Link>
           </li>
         ))}
       </ul>

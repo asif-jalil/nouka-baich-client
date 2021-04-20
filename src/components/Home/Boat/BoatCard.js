@@ -1,9 +1,9 @@
 import React from "react";
 import { Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const BoatCard = ({ boat }) => {
-  const { boatImg, boatInfo } = boat;
-  const { boatName, boatFair, boatLocation, boatBarths } = boatInfo;
+  const { boatName, boatFair, boatLocation, boatBarths, boatImg } = boat;
   const { img, mimetype } = boatImg;
 
   const styleBackground = {
@@ -13,6 +13,9 @@ const BoatCard = ({ boat }) => {
   return (
     <Col md={6} className="mb-30">
       <div className="single-boat" style={styleBackground}>
+        <Link to={`/dashboard/add-booking/${boatName}`} className="button main-btn main-btn-sm boat-btn">
+          Book Now
+        </Link>
         <span>${boatFair} / Day</span>
         <div className="single-boat-content">
           <h4>{boatName}</h4>

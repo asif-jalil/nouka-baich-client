@@ -19,7 +19,7 @@ const Login = () => {
   let location = useLocation();
   const [error, setError] = useState("");
 
-  let { from } = location.state || { from: { pathname: "/" } };
+  let { from } = location.state || { from: { pathname: "/dashboard" } };
 
   const googleProvider = new firebase.auth.GoogleAuthProvider();
 
@@ -53,7 +53,7 @@ const Login = () => {
                   </button>
                 </div>
                 <div className="w-100 text-center mt-3">
-                  <Link className="btn btn-link" to="/">
+                  <Link className="btn btn-link theme-text" to="/">
                     Go to Home
                   </Link>
                 </div>

@@ -7,15 +7,27 @@ import { loadStripe } from "@stripe/stripe-js";
 import PaymentForm from "./PaymentForm";
 import ThankYou from "./ThankYou";
 import { useState } from "react";
+import { useParams } from "react-router";
+import { useEffect } from "react";
 
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 const AddBooking = () => {
   const [userInfo, setUserInfo] = useState();
   const [active, setActive] = useState("info");
+  const { boat } = useParams();
+  const [boatInfo, setBoatInfo] = useState({});
+  const [boatChange, setBoatChange] = useState();
+
+  useEffect(() => {
+    fetch(`https://salty-journey-40699.herokuapp.com/boatByName/${boat}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBoatInfo(data[0]);
+      });
+  }, [boat]);
 
   const onSubmit = (data) => {
-    console.log(data);
     setUserInfo(data);
     setActive("payment");
   };
@@ -39,17 +51,21 @@ const AddBooking = () => {
       </div>
       {!(active === "thank") && (
         <h5 className="theme-text text-center mb-3">
-          You are about to hire <strong>dolphin 47</strong>
+          You are about to hire <strong>{boatChange || boat}</strong>
         </h5>
       )}
-      {active === "payment" && <h6 className="theme-text text-center mb-5">Total Cost: ${500 * userInfo?.day} (Per Day $500)</h6>}
-      {active && active === "info" && <AddBookingForm userInfo={userInfo} onSubmit={onSubmit} />}
+      {active === "payment" && (
+        <h6 className="theme-text text-center mb-5">
+          Total Cost: ${parseInt(boatInfo?.boatFair) * userInfo?.day} (Per Day ${boatInfo?.boatFair})
+        </h6>
+      )}
+      {active && active === "info" && <AddBookingForm userInfo={userInfo} boat={boat} onSubmit={onSubmit} boatChange={boatChange} setBoatChange={setBoatChange} setBoatInfo={setBoatInfo} />}
       {active && active === "payment" && (
         <Elements stripe={stripePromise}>
-          <PaymentForm active={active} setActive={setActive} />
+          <PaymentForm active={active} setActive={setActive} userInfo={userInfo} boatInfo={boatInfo} boat={boat} />
         </Elements>
       )}
-      {active && active === "thank" && <ThankYou userInfo={userInfo} />}
+      {active && active === "thank" && <ThankYou userInfo={userInfo} boatInfo={boatInfo} />}
     </Container>
   );
 };

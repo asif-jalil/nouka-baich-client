@@ -3,8 +3,7 @@ import { Card, Col, Spinner } from "react-bootstrap";
 import "./ManageBoatCard.css";
 
 const ManageBoatCard = ({ boat, handleDelete }) => {
-  const { _id, boatImg, boatInfo } = boat;
-  const { boatName, boatFair, boatLocation, boatBarths } = boatInfo;
+  const { _id, boatImg, boatName, boatFair, boatLocation, boatBarths } = boat;
   const { img, mimetype } = boatImg;
   const [loader, setLoader] = useState(false);
 
@@ -22,7 +21,7 @@ const ManageBoatCard = ({ boat, handleDelete }) => {
           <img className="mr-3" src={`data:${mimetype};base64, ${img}`} alt="" />
           <div>
             <Card.Title className="mb-4">{boatName}</Card.Title>
-            <Card.Subtitle className="mb-2">{boatFair} / Day</Card.Subtitle>
+            <Card.Subtitle className="mb-2">${boatFair} / Day</Card.Subtitle>
             <Card.Text className="mb-0">Location: {boatLocation}</Card.Text>
             <Card.Text className="mb-0">Barths: {boatBarths}</Card.Text>
           </div>

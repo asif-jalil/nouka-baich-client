@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import checkIcon from "../../../images/checkmark.svg";
 
-const ThankYou = ({ userInfo }) => {
+const ThankYou = ({ userInfo, boatInfo }) => {
   return (
     <Row className="justify-content-center">
       <Col lg={5} md={7}>
@@ -13,9 +13,9 @@ const ThankYou = ({ userInfo }) => {
             <Card.Subtitle className="mb-3">Booking Details</Card.Subtitle>
             <Card.Text className="mb-0">Name: {userInfo.name}</Card.Text>
             <Card.Text className="mb-0">Email: {userInfo.email}</Card.Text>
-            <Card.Text className="mb-0">Boat: Dolphin 47</Card.Text>
+            <Card.Text className="mb-0">Boat: {boatInfo?.boatName}</Card.Text>
             <Card.Text className="mb-0">Day: {userInfo.day}</Card.Text>
-            <Card.Text className="mb-0">Total Cost: ${userInfo.day * 500}</Card.Text>
+            <Card.Text className="mb-0">Total Cost: ${userInfo.day * parseInt(boatInfo?.boatFair)}</Card.Text>
           </Card.Body>
         </Card>
       </Col>
