@@ -1,8 +1,21 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 import "./BookingList.css";
+import BookingListRow from "./BookingListRow";
 
 const BookingList = () => {
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/bookings")
+      .then((res) => res.json())
+      .then((data) => {
+        setBookings(data);
+      });
+  }, []);
+
   const handleStatusChange = (event) => {
     event.target.setAttribute("selected", "selected");
     console.log(event.target);
@@ -18,52 +31,14 @@ const BookingList = () => {
             <th>Boat Name</th>
             <th>Day(s)</th>
             <th>Cost</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Asif</td>
-            <td>asifjalil0@gmail.com</td>
-            <td>Dolphin 47</td>
-            <td>7</td>
-            <td>$1000</td>
-            <td>
-              <select onChange={handleStatusChange} className="form-control">
-                <option value="pending">Pending</option>
-                <option value="ongoing">OnGoing</option>
-                <option value="done">Done</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>Asif</td>
-            <td>asifjalil0@gmail.com</td>
-            <td>Dolphin 47</td>
-            <td>7</td>
-            <td>$1000</td>
-            <td>
-              <select onChange={handleStatusChange} className="form-control">
-                <option value="pending">Pending</option>
-                <option value="ongoing">OnGoing</option>
-                <option value="done">Done</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>Asif</td>
-            <td>asifjalil0@gmail.com</td>
-            <td>Dolphin 47</td>
-            <td>7</td>
-            <td>$1000</td>
-            <td>
-              <select onChange={handleStatusChange} className="form-control">
-                <option value="pending">Pending</option>
-                <option value="ongoing">OnGoing</option>
-                <option value="done">Done</option>
-              </select>
-            </td>
-          </tr>
+          {bookings.map((booking, idx) => (
+            <BookingListRow key={idx} booking={booking} />
+          ))}
         </tbody>
       </Table>
     </Container>

@@ -31,54 +31,52 @@ const AddBookingForm = ({ userInfo, boat, onSubmit, boatChange, setBoatChange, s
   useEffect(() => {
     const findBoat = boats.find((boat) => boat.boatName === boatChange);
     setBoatInfo(findBoat);
-  }, [boatChange, boats]);
+  }, [boatChange, boats, setBoatInfo]);
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Row>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Row>
+        <Col md={6}>
+          <div className="mb-3">
+            <label htmlFor="">Your Name</label>
+            <input defaultValue={userInfo ? userInfo.name : currentUser.displayName} type="text" className="form-control" {...register("name", { required: true })} />
+            {errors.name && <span className="error">This field is required</span>}
+          </div>
+        </Col>
+        <Col md={6}>
+          <div className="mb-3">
+            <label htmlFor="">Email</label>
+            <input readOnly defaultValue={userInfo ? userInfo.email : currentUser.email} type="text" className="form-control" {...register("email", { required: true })} />
+            {errors.email && <span className="error">This field is required</span>}
+          </div>
+        </Col>
+        {!boat && (
           <Col md={6}>
             <div className="mb-3">
-              <label htmlFor="">Your Name</label>
-              <input defaultValue={userInfo ? userInfo.name : currentUser.displayName} type="text" className="form-control" {...register("name", { required: true })} />
-              {errors.name && <span className="error">This field is required</span>}
+              <label htmlFor="">Boat</label>
+              <select defaultValue={boat} className="form-control" {...register("boat", { required: true })}>
+                {boats.map((boat) => (
+                  <option value={boat.boatName}>{boat.boatName}</option>
+                ))}
+              </select>
+              {errors.boat && <span className="error">This field is required</span>}
             </div>
           </Col>
-          <Col md={6}>
-            <div className="mb-3">
-              <label htmlFor="">Email</label>
-              <input defaultValue={userInfo ? userInfo.email : currentUser.email} type="text" className="form-control" {...register("email", { required: true })} />
-              {errors.email && <span className="error">This field is required</span>}
-            </div>
-          </Col>
-          {!boat && (
-            <Col md={6}>
-              <div className="mb-3">
-                <label htmlFor="">Boat</label>
-                <select defaultValue={boat} className="form-control" {...register("boat", { required: true })}>
-                  {boats.map((boat) => (
-                    <option value={boat.boatName}>{boat.boatName}</option>
-                  ))}
-                </select>
-                {errors.boat && <span className="error">This field is required</span>}
-              </div>
-            </Col>
-          )}
-          <Col md={6}>
-            <div className="mb-3">
-              <label htmlFor="">Day</label>
-              <input defaultValue={userInfo?.day} type="number" className="form-control" {...register("day", { required: true })} />
-              {errors.day && <span className="error">This field is required</span>}
-            </div>
-          </Col>
-          <Col sm={12}>
-            <button type="submit" className="button main-btn main-btn-sm main-btn-transparent">
-              Next
-            </button>
-          </Col>
-        </Row>
-      </form>
-    </>
+        )}
+        <Col md={6}>
+          <div className="mb-3">
+            <label htmlFor="">Day</label>
+            <input defaultValue={userInfo?.day} type="number" className="form-control" {...register("day", { required: true })} />
+            {errors.day && <span className="error">This field is required</span>}
+          </div>
+        </Col>
+        <Col sm={12}>
+          <button type="submit" className="button main-btn main-btn-sm main-btn-transparent">
+            Next
+          </button>
+        </Col>
+      </Row>
+    </form>
   );
 };
 

@@ -42,14 +42,17 @@ const Layout = () => {
           <UserSidebar />
           <section className="dashboard-content">
             <Switch>
-              <Route path="/dashboard/add-booking/:id">
-                <AddBooking />
-              </Route>
               <Route exact path="/dashboard/bookings">
                 <Bookings />
               </Route>
               <Route exact path="/dashboard/add-review">
                 <AddReview />
+              </Route>
+              <Route path="/dashboard/add-booking/:boat">
+                <AddBooking />
+              </Route>
+              <Route path="/dashboard/add-booking">
+                <AddBooking />
               </Route>
               {/* <Route>
                 <Redirect to="/dashboard/bookings"></Redirect>

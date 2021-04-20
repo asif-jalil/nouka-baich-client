@@ -56,7 +56,7 @@ const AddBooking = () => {
       )}
       {active === "payment" && (
         <h6 className="theme-text text-center mb-5">
-          Total Cost: ${parseInt(boatInfo?.boatFair) * userInfo?.day} (Per Day ${boatInfo?.boatFair})
+          Total Cost: ${parseInt(boatInfo?.boatFair) * parseInt(userInfo?.day)} (Per Day ${boatInfo?.boatFair})
         </h6>
       )}
       {active && active === "info" && <AddBookingForm userInfo={userInfo} boat={boat} onSubmit={onSubmit} boatChange={boatChange} setBoatChange={setBoatChange} setBoatInfo={setBoatInfo} />}

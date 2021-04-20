@@ -1,11 +1,11 @@
 import React from "react";
 import { useStripe, useElements, CardNumberElement, CardCvcElement, CardExpiryElement } from "@stripe/react-stripe-js";
-import { Col, Row, Alert } from "react-bootstrap";
+import { Col, Row, Alert, Spinner } from "react-bootstrap";
 import { useState } from "react";
 
-const PaymentForm = ({ active, setActive }) => {
-  const [cardInfo, setCardInfo] = useState();
+const PaymentForm = ({ setActive, userInfo, boatInfo, boat }) => {
   const [error, setError] = useState();
+  const [loader, setLoader] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
 
@@ -15,6 +15,8 @@ const PaymentForm = ({ active, setActive }) => {
     if (!stripe || !elements) {
       return;
     }
+
+    setLoader(true);
 
     const cardElement = elements.getElement(CardNumberElement);
 
@@ -26,8 +28,23 @@ const PaymentForm = ({ active, setActive }) => {
     if (error) {
       setError(error.message);
     } else {
-      setCardInfo({ id: paymentMethod.id, card: paymentMethod.card });
-      setActive("thank");
+      const status = "pending";
+      const cost = parseInt(boatInfo?.boatFair) * userInfo?.day;
+      const cardInfo = { pm_id: paymentMethod.id, card: paymentMethod.card };
+      fetch("https://salty-journey-40699.herokuapp.com/add-booking", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status, boat, ...userInfo, cost, ...cardInfo }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data) {
+            setLoader(false);
+            setActive("thank");
+          }
+        });
     }
   };
 
@@ -65,6 +82,7 @@ const PaymentForm = ({ active, setActive }) => {
             <button type="submit" disabled={!stripe} className="button main-btn main-btn-sm main-btn-transparent">
               Pay
             </button>
+            {loader && <Spinner animation="border" className="position-absolute mt-2 ml-3"></Spinner>}
           </Col>
         </Row>
       </form>

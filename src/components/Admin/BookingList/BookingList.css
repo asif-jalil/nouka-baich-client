@@ -19,6 +19,10 @@
   background: #dfdfdf;
 }
 
+.booking-list .action {
+  cursor: pointer;
+}
+
 @media(max-width: 576px) {
   .booking-list {
     font-size: 14px

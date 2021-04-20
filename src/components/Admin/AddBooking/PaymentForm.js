@@ -3,9 +3,10 @@ import { useStripe, useElements, CardNumberElement, CardCvcElement, CardExpiryEl
 import { Col, Row, Alert, Spinner } from "react-bootstrap";
 import { useState } from "react";
 
-const PaymentForm = ({ active, setActive, userInfo, boatInfo, boat }) => {
+const PaymentForm = ({ setActive, userInfo, boatInfo, boat }) => {
   const [error, setError] = useState();
   const [loader, setLoader] = useState(false);
+  const [disabledBtn, setDisabledBtn] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
 
@@ -17,9 +18,8 @@ const PaymentForm = ({ active, setActive, userInfo, boatInfo, boat }) => {
     }
 
     setLoader(true);
-
+    setDisabledBtn(true);
     const cardElement = elements.getElement(CardNumberElement);
-
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: cardElement,
@@ -28,6 +28,7 @@ const PaymentForm = ({ active, setActive, userInfo, boatInfo, boat }) => {
     if (error) {
       setError(error.message);
     } else {
+      const status = "pending";
       const cost = parseInt(boatInfo?.boatFair) * userInfo?.day;
       const cardInfo = { pm_id: paymentMethod.id, card: paymentMethod.card };
       fetch("https://salty-journey-40699.herokuapp.com/add-booking", {
@@ -35,12 +36,13 @@ const PaymentForm = ({ active, setActive, userInfo, boatInfo, boat }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ boat, ...userInfo, cost, ...cardInfo }),
+        body: JSON.stringify({ status, boat, ...userInfo, cost, ...cardInfo }),
       })
         .then((res) => res.json())
         .then((data) => {
           if (data) {
             setLoader(false);
+            setDisabledBtn(false);
             setActive("thank");
           }
         });
@@ -78,7 +80,7 @@ const PaymentForm = ({ active, setActive, userInfo, boatInfo, boat }) => {
             <button type="button" onClick={handleBack} disabled={!stripe} className="button main-btn main-btn-sm main-btn-transparent mr-3">
               Back
             </button>
-            <button type="submit" disabled={!stripe} className="button main-btn main-btn-sm main-btn-transparent">
+            <button type="submit" disabled={!stripe || disabledBtn} className="button main-btn main-btn-sm main-btn-transparent">
               Pay
             </button>
             {loader && <Spinner animation="border" className="position-absolute mt-2 ml-3"></Spinner>}

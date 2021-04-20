@@ -57,9 +57,9 @@ const AdminLayout = () => {
               <Route path="/dashboard/boats">
                 <ManageBoat />
               </Route>
-              <Route path="/dashboard/manage-boat">
+              {/* <Route path="/dashboard/manage-boat">
                 <BookingList />
-              </Route>
+              </Route> */}
               <Route path="/dashboard/add-booking/:boat">
                 <AddBooking />
               </Route>

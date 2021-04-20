@@ -1,16 +1,35 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
+import { useAuth } from "../../../App";
 import "./MyBooking.css";
 import MyBookingCard from "./MyBookingCard";
 
-const bookingData = [{ status: "pending" }, { status: "ongoing" }, { status: "done" }];
-
 const MyBookings = () => {
+  const { currentUser } = useAuth();
+  const [myBookings, setMyBookings] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/booking-by-user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: currentUser.email }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setMyBookings(data);
+        console.log(data);
+      });
+  }, [currentUser.email]);
+
   return (
     <Container fluid>
       <h3 className="dashboard-page-title">Your Bookings</h3>
       <Row>
-        {bookingData.map((booking) => (
+        {myBookings.map((booking) => (
           <MyBookingCard booking={booking} />
         ))}
       </Row>
