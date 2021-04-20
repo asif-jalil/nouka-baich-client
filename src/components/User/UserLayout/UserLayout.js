@@ -54,9 +54,9 @@ const Layout = () => {
               <Route path="/dashboard/add-booking">
                 <AddBooking />
               </Route>
-              {/* <Route>
+              <Route>
                 <Redirect to="/dashboard/bookings"></Redirect>
-              </Route> */}
+              </Route>
             </Switch>
           </section>
         </>

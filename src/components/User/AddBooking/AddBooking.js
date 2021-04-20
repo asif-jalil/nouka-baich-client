@@ -14,6 +14,7 @@ const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 const AddBooking = () => {
   const [userInfo, setUserInfo] = useState();
+  const [fair, setFair] = useState();
   const [active, setActive] = useState("info");
   const { boat } = useParams();
   const [boatInfo, setBoatInfo] = useState({});
@@ -29,6 +30,7 @@ const AddBooking = () => {
 
   const onSubmit = (data) => {
     setUserInfo(data);
+    setFair(boatInfo?.boatFair);
     setActive("payment");
   };
 
@@ -56,7 +58,7 @@ const AddBooking = () => {
       )}
       {active === "payment" && (
         <h6 className="theme-text text-center mb-5">
-          Total Cost: ${parseInt(boatInfo?.boatFair) * parseInt(userInfo?.day)} (Per Day ${boatInfo?.boatFair})
+          Total Cost: ${parseInt(boatInfo?.boatFair || fair) * parseInt(userInfo?.day)} (Per Day ${boatInfo?.boatFair})
         </h6>
       )}
       {active && active === "info" && <AddBookingForm userInfo={userInfo} boat={boat} onSubmit={onSubmit} boatChange={boatChange} setBoatChange={setBoatChange} setBoatInfo={setBoatInfo} />}

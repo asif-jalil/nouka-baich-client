@@ -12,6 +12,12 @@
   height: 100px;
 }
 
+.my-booking-img .spinner-border {
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+}
+
 .my-booking-img img {
   width: 100px;
   height: 100px;

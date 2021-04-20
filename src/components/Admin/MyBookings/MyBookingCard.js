@@ -39,7 +39,7 @@ const MyBookingCard = ({ booking }) => {
               <Card.Text className="mb-0">Total Cost: ${cost}</Card.Text>
             </div>
             <div className="my-booking-img position-relative">
-              {loader ? <Spinner className="position-center" animation="border"></Spinner> : <img src={`data:${boatInfo.boatImg.type};base64, ${boatInfo.boatImg.img}`} alt="" />}
+              {loader ? <Spinner animation="border"></Spinner> : <img src={`data:${boatInfo.boatImg.type};base64, ${boatInfo.boatImg.img}`} alt="" />}
             </div>
           </div>
         </Card.Body>

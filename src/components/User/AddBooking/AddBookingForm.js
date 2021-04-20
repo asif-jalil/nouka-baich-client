@@ -54,9 +54,11 @@ const AddBookingForm = ({ userInfo, boat, onSubmit, boatChange, setBoatChange, s
           <Col md={6}>
             <div className="mb-3">
               <label htmlFor="">Boat</label>
-              <select defaultValue={boat} className="form-control" {...register("boat", { required: true })}>
-                {boats.map((boat) => (
-                  <option value={boat.boatName}>{boat.boatName}</option>
+              <select className="form-control" {...register("boat", { required: true })}>
+                {boats.map((boat, idx) => (
+                  <option defaultValue={boat} key={idx} value={boat.boatName}>
+                    {boat.boatName}
+                  </option>
                 ))}
               </select>
               {errors.boat && <span className="error">This field is required</span>}

@@ -1,22 +1,15 @@
-.booking-list .form-control {
-  height: 30px;
-  width: 120px;
-  background: #f35e4d;
-  color: #fff;
-  padding: 5px;
-  font-size: 14px;
-  border: none;
-  border-radius: 4px;
-  box-shadow: none;
-  outline: none;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
+.booking-list .spinner-border {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 15px);
 }
 
 .booking-list thead {
   background: #dfdfdf;
+}
+
+.booking-list tbody {
+  min-height: 200px;
 }
 
 .booking-list .action {

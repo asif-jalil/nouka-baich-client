@@ -4,8 +4,8 @@ import ongoingIcon from "../../../images/process.svg";
 import pendingIcon from "../../../images/clock.svg";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
-const BookingListRow = ({ booking }) => {
-  const { name, email, boat, day, cost, status } = booking;
+const BookingListRow = ({ booking, handleStatus }) => {
+  const { _id, name, email, boat, day, cost, status } = booking;
 
   return (
     <tr>
@@ -17,17 +17,17 @@ const BookingListRow = ({ booking }) => {
       <td className="text-capitalize">{status}</td>
       <td>
         <OverlayTrigger overlay={<Tooltip id={`tooltip-1`}>Pending</Tooltip>}>
-          <span className="mx-1 action">
+          <span onClick={() => handleStatus("pending", _id)} className="mx-1 action">
             <img src={pendingIcon} width="20px" alt="" />
           </span>
         </OverlayTrigger>
         <OverlayTrigger overlay={<Tooltip id={`tooltip-1`}>Ongoing</Tooltip>}>
-          <span className="mx-1 action">
+          <span onClick={() => handleStatus("ongoing", _id)} className="mx-1 action">
             <img src={ongoingIcon} width="20px" alt="" />
           </span>
         </OverlayTrigger>
         <OverlayTrigger overlay={<Tooltip id={`tooltip-1`}>Done</Tooltip>}>
-          <span className="mx-1 action">
+          <span onClick={() => handleStatus("done", _id)} className="mx-1 action">
             <img src={doneIcon} width="20px" alt="" />
           </span>
         </OverlayTrigger>

@@ -14,7 +14,6 @@ const Review = () => {
       .then((data) => {
         setReviews(data);
         setLoader(false);
-        console.log(data);
       });
   }, []);
 

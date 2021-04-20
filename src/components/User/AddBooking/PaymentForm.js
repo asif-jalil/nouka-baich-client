@@ -6,6 +6,7 @@ import { useState } from "react";
 const PaymentForm = ({ setActive, userInfo, boatInfo, boat }) => {
   const [error, setError] = useState();
   const [loader, setLoader] = useState(false);
+  const [disabledBtn, setDisabledBtn] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
 
@@ -17,7 +18,7 @@ const PaymentForm = ({ setActive, userInfo, boatInfo, boat }) => {
     }
 
     setLoader(true);
-
+    setDisabledBtn(true);
     const cardElement = elements.getElement(CardNumberElement);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -42,6 +43,7 @@ const PaymentForm = ({ setActive, userInfo, boatInfo, boat }) => {
         .then((data) => {
           if (data) {
             setLoader(false);
+            setDisabledBtn(false);
             setActive("thank");
           }
         });
@@ -79,7 +81,7 @@ const PaymentForm = ({ setActive, userInfo, boatInfo, boat }) => {
             <button type="button" onClick={handleBack} disabled={!stripe} className="button main-btn main-btn-sm main-btn-transparent mr-3">
               Back
             </button>
-            <button type="submit" disabled={!stripe} className="button main-btn main-btn-sm main-btn-transparent">
+            <button type="submit" disabled={!stripe || disabledBtn} className="button main-btn main-btn-sm main-btn-transparent">
               Pay
             </button>
             {loader && <Spinner animation="border" className="position-absolute mt-2 ml-3"></Spinner>}
