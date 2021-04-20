@@ -11,7 +11,7 @@ const MyBookings = () => {
   const [myBookings, setMyBookings] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/booking-by-user", {
+    fetch("https://salty-journey-40699.herokuapp.com/booking-by-user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

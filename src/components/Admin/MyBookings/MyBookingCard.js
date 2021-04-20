@@ -18,7 +18,7 @@ const MyBookingCard = ({ booking }) => {
   }, [status]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/boatByName/${boat}`)
+    fetch(`https://salty-journey-40699.herokuapp.com/boatByName/${boat}`)
       .then((res) => res.json())
       .then((data) => {
         setBoatInfo(data[0]);
