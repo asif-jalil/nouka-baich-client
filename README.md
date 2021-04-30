@@ -2,7 +2,7 @@
 
 ---
 
-[Live Demo](https://noukabaich.netlify.app/)
+[Live Demo](https://noukabaich.netlify.app/) | [API Server](https://salty-journey-40699.herokuapp.com/)
 
 NOUKA BAICH is a **Online Boat Hiring** website. The main purpose of this website is to hire boat easily online. It will be very helpful for all user. It is build with **react**. It is tested on Google Crome, Mozilla Firefox. If it doesn't work please create an issue.
 
