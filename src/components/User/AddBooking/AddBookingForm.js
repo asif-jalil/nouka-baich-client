@@ -26,12 +26,12 @@ const AddBookingForm = ({ userInfo, boat, onSubmit, boatChange, setBoatChange, s
 
   useEffect(() => {
     setBoatChange(watch("boat"));
-  }, [watch("boat")]);
+  }, [setBoatChange, watch]);
 
   useEffect(() => {
     const findBoat = boats.find((boat) => boat.boatName === boatChange);
     setBoatInfo(findBoat);
-  }, [boatChange, boats]);
+  }, [boatChange, boats, setBoatInfo]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
