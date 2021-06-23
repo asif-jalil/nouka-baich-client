@@ -57,6 +57,11 @@ const Login = () => {
                     Go to Home
                   </Link>
                 </div>
+                <div className="w-100 text-center mt-3">
+                  <Link className="btn btn-link theme-text" to="/admin-login">
+                    Admin Login
+                  </Link>
+                </div>
               </Card.Body>
             </Card>
           </Col>

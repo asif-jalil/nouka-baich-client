@@ -53,9 +53,9 @@ const AdminSidebar = () => {
         <NavLink to="/dashboard/boats" className="nav-link">
           <i className="fas fa-anchor"></i> Manage Boats
         </NavLink>
-        <NavLink to="/dashboard/add-admin" className="nav-link">
+        {/* <NavLink to="/dashboard/add-admin" className="nav-link">
           <i className="fas fa-user-lock"></i> Make Admin
-        </NavLink>
+        </NavLink> */}
         <NavLink exact to="/" className="nav-link">
           <i className="far fa-home"></i> Home
         </NavLink>

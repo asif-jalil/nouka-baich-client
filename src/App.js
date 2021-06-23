@@ -11,6 +11,7 @@ import { useState } from "react";
 import firebase from "firebase/app";
 import { useContext } from "react";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import AdminLogin from "./components/Login/AdminLogin";
 
 const AuthContext = createContext();
 
@@ -72,6 +73,9 @@ function App() {
             )}
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/admin-login">
+              <AdminLogin />
             </Route>
             <Route path="*">
               <NotFound />
