@@ -25,7 +25,6 @@ const AddBooking = () => {
       .then((res) => res.json())
       .then((data) => {
         setBoatInfo(data[0]);
-        console.log(data[0]);
       });
   }, [boat]);
 

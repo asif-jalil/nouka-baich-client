@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Spinner } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import "./Review.css";
 import ReviewCard from "./ReviewCard";
 import "slick-carousel/slick/slick.css";

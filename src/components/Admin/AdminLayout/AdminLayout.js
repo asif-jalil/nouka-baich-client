@@ -34,7 +34,7 @@ const AdminLayout = () => {
           setLoading(false);
         }
       });
-  }, []);
+  }, [currentUser?.email, setIsAdmin]);
 
   return (
     <main>

@@ -28,7 +28,7 @@ const Layout = () => {
           setLoading(false);
         }
       });
-  }, []);
+  }, [currentUser?.email]);
 
   return (
     <main>
